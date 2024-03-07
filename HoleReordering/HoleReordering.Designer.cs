@@ -39,15 +39,15 @@
             upButton = new Button();
             downButton = new Button();
             label3 = new Label();
-            numericUpDown1 = new NumericUpDown();
+            par = new NumericUpDown();
             openDialog = new OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)par).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 29);
+            label1.Location = new Point(17, 24);
             label1.Name = "label1";
             label1.Size = new Size(118, 20);
             label1.TabIndex = 0;
@@ -55,33 +55,35 @@
             // 
             // mapFilename
             // 
-            mapFilename.Location = new Point(138, 26);
+            mapFilename.Location = new Point(16, 55);
             mapFilename.Name = "mapFilename";
-            mapFilename.Size = new Size(327, 27);
+            mapFilename.Size = new Size(581, 27);
             mapFilename.TabIndex = 1;
             // 
             // browseButton
             // 
-            browseButton.Location = new Point(481, 25);
+            browseButton.Location = new Point(150, 20);
             browseButton.Name = "browseButton";
             browseButton.Size = new Size(94, 29);
             browseButton.TabIndex = 2;
             browseButton.Text = "Browse...";
             browseButton.UseVisualStyleBackColor = true;
+            browseButton.Click += browseButton_Click;
             // 
             // reloadButton
             // 
-            reloadButton.Location = new Point(14, 76);
+            reloadButton.Location = new Point(16, 96);
             reloadButton.Name = "reloadButton";
             reloadButton.Size = new Size(94, 29);
             reloadButton.TabIndex = 3;
             reloadButton.Text = "Reload";
             reloadButton.UseVisualStyleBackColor = true;
+            reloadButton.Click += reloadButton_Click;
             // 
             // unsavedChanges
             // 
             unsavedChanges.AutoSize = true;
-            unsavedChanges.Location = new Point(148, 80);
+            unsavedChanges.Location = new Point(150, 100);
             unsavedChanges.Name = "unsavedChanges";
             unsavedChanges.Size = new Size(148, 20);
             unsavedChanges.TabIndex = 4;
@@ -89,12 +91,13 @@
             // 
             // saveButton
             // 
-            saveButton.Location = new Point(313, 76);
+            saveButton.Location = new Point(315, 96);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(118, 29);
             saveButton.TabIndex = 5;
             saveButton.Text = "Save Changes";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // holes
             // 
@@ -104,15 +107,16 @@
             holes.Name = "holes";
             holes.Size = new Size(169, 344);
             holes.TabIndex = 6;
+            holes.SelectedIndexChanged += holes_SelectedIndexChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(16, 144);
             label2.Name = "label2";
-            label2.Size = new Size(86, 20);
+            label2.Size = new Size(107, 20);
             label2.TabIndex = 7;
-            label2.Text = "Hole Order:";
+            label2.Text = "Hole Ordering:";
             // 
             // upButton
             // 
@@ -122,6 +126,7 @@
             upButton.TabIndex = 8;
             upButton.Text = "Up";
             upButton.UseVisualStyleBackColor = true;
+            upButton.Click += upButton_Click;
             // 
             // downButton
             // 
@@ -131,6 +136,7 @@
             downButton.TabIndex = 9;
             downButton.Text = "Down";
             downButton.UseVisualStyleBackColor = true;
+            downButton.Click += downButton_Click;
             // 
             // label3
             // 
@@ -141,14 +147,15 @@
             label3.TabIndex = 10;
             label3.Text = "Par:";
             // 
-            // numericUpDown1
+            // par
             // 
-            numericUpDown1.Location = new Point(194, 285);
-            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(150, 27);
-            numericUpDown1.TabIndex = 11;
-            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            par.Location = new Point(194, 285);
+            par.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            par.Name = "par";
+            par.Size = new Size(150, 27);
+            par.TabIndex = 11;
+            par.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            par.ValueChanged += par_ValueChanged;
             // 
             // openDialog
             // 
@@ -159,7 +166,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(609, 544);
-            Controls.Add(numericUpDown1);
+            Controls.Add(par);
             Controls.Add(label3);
             Controls.Add(downButton);
             Controls.Add(upButton);
@@ -174,7 +181,8 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "HoleReordering";
             Text = "Golf With Your Friends Hole Reordering Tool";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            Load += HoleReordering_Load;
+            ((System.ComponentModel.ISupportInitialize)par).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,7 +200,7 @@
         private Button upButton;
         private Button downButton;
         private Label label3;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown par;
         private OpenFileDialog openDialog;
     }
 }
