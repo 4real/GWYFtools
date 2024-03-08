@@ -17,8 +17,6 @@
             if (parts.Length <= 1)
                 return;
 
-            //just reconstruct indices and operate in orginal string
-
             holes = new Hole[parts.Length - 1];
             for (int i = 1; i < parts.Length; ++i)
             {

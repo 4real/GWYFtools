@@ -2,7 +2,7 @@
 {
     internal sealed class Hole
     {
-        //text indices
+        //"object" as in Json terminology
         public string ObjectBeforePar;
         public string ObjectAfterPar;
 
